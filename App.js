@@ -1,14 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useState } from 'react';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
+  const [number, setNumber] = useState(0)
+  
+  let handlepressed=()=>{
+    
+    setNumber(number + 1)
+  }
+
+
   return (
     <View style={styles.container}>
-      <Text>Welcome to the master react native project </Text>
-      <TouchableOpacity style={styles.button} onPress={()=>{Linking.openURL('https://www.youtube.com/')}}>
-        <Text style={styles.buttonText}>Youtube Buttons</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
+     <Text style={styles.txt1}>{number * 5}</Text>
+     <TouchableOpacity style={styles.btn} onPress={handlepressed}>
+      <Text style={styles.txt}>Add</Text>
+     </TouchableOpacity>
+     <Text>You've Pressed {number} </Text>
+     {/* <Button style={styles.btn} title="Add" onPress={handlepressed}>
+     </Button>
+     <Text>You've Pressed {number} </Text> */}
     </View>
   );
 }
@@ -20,16 +32,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  button:{
-    width: '70%',
-    height: 40,
-    backgroundColor: 'blue',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 10,
-  },
-  buttonText:{
+  txt1:{
     fontWeight: 'bold',
-    color: '#ffffff'
+    fontSize: 40,
+  },
+  btn:{
+    width:50,
+    height:50,
+    backgroundColor: 'blue',
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 30
+  },
+  txt:{
+    color: 'white',
+    fontWeight: 'bold',
   }
 });
